@@ -2,18 +2,18 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Exerciciocontroller;
 
-Route::get('/', function () {
+Route::get('/paginainicial', function () {
     return view('welcome');
 });
 
-Route :: get ('/exercicio', function() {
-    return view('exercicio');
-});
+//exercicio 1
+Route::get('/exercicio', [ExercicioController::class, 'Exibirformulario']);
+Route::post('/resposta', [ExercicioController::class, 'calcularSoma']);
 
-Route::post('/resposta', function (Request $request) {
-    $valor1 = $request->input('valor1');
-    $valor2 = $request->input('valor2');
-    $soma = $valor1 + $valor2;
-    return "A soma é: $soma";
-});
+//rota exercicio 2 abrir > enviar > processar
+Route::get('/exercicio2', [ExercicioController::class, 'Exibirformulario2']);
+Route::post('/resposta2', [ExercicioController::class, 'calcularSub']);
+
+?>
