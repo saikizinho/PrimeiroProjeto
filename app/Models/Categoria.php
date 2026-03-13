@@ -14,5 +14,4 @@ class Categoria extends Model
         'nome',
         'descricao'
     ];
-
 }
